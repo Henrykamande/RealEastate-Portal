@@ -1,0 +1,30 @@
+.v-text-field__details{
+    display: none !important;
+}
+
+#docForm .v-data-table td, .v-data-table th {
+    padding: 0px 0px !important;
+} 
+
+#docForm .v-data-table tbody tr:hover {
+    background-color: #fff !important;
+}
+
+.borderNone{
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+} 
+
+.customEditDialog {
+    display: block !important;
+}
+
+.v-small-dialog__activator__content {
+  display: block !important;
+}
+
+/* .v-small-dialog__activator {
+    -webkit-box-sizing: initial; 
+    box-sizing: initial;
+} */

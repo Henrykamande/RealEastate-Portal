@@ -1,0 +1,74 @@
+<template>
+  <v-container fluid>
+    <v-card>
+      <v-toolbar color="toolbarColor" dense dark>
+        <v-toolbar-title>Vehicles</v-toolbar-title>
+      </v-toolbar>
+      <v-card-text>
+        <v-row>
+          <v-col cols="12">
+            <v-btn color="accent" text to="/new/vehicle"><v-icon>mdi-plus</v-icon>Vehicle</v-btn>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <!-- start of col -->
+          <v-col cols="4" v-for="dataItem in dataArray" v-bind:key="dataItem._id">
+            <v-card class="mx-auto" :to="`/vehicle/details/${dataItem.url}`">
+              <v-img
+                :src="`${serverUrl}/uploads/vehicles/${dataItem.coverImage}`"
+                height="200px"
+                style="max-height: 200px"
+              ></v-img>
+
+              <v-card-title> {{dataItem.name}} </v-card-title>
+
+              <v-card-actions> 
+                <v-btn color="accent" text :to="`/vehicle/details/${dataItem.url}`">More Details</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+          <!-- end of col -->
+        </v-row>
+      </v-card-text>
+    </v-card>
+    <snackbar ref="snackbar"></snackbar>
+  </v-container>
+</template>
+
+<script>
+import  { mapGetters }  from 'vuex';
+export default {
+  computed: {
+    ...mapGetters(['serverUrl'])
+  },
+  data() {
+    return {
+     dataArray : [],
+    }
+  },
+  methods: {
+     getData() {
+      const url = "/vehicles";
+      const self = this;
+      this.$store
+        .dispatch("expressGet", url)
+        .then((res) => {
+          if(res.state) {
+           self.dataArray = res.records;
+          }
+        })
+        .catch((err) => {
+          console.log(err, 'error')
+          this.$refs.snackbar.show(err, "red");
+        });
+    },
+  },
+  created () {
+    this.getData();
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+</style>

@@ -1,0 +1,143 @@
+<template>
+   <v-row>
+          <v-dialog v-model="dialogsectionb" 
+          persistent max-width="750px">
+            <v-card>
+              <v-toolbar dense color="toolbarColor" dark>
+                <v-toolbar-title>Create Section B module</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn icon @click="close()">
+                  <v-icon>mdi-close</v-icon>
+                </v-btn>
+              </v-toolbar>
+              <v-card-text>
+                <v-container fluid>
+                  <v-row class="subtitle-2 text--primary">
+                    <v-col cols="12" xs="12" sm="6" md="6">
+                      <v-text-field label="H1" outlined dense v-model="form.h1"></v-text-field>
+                    </v-col>
+                    <v-col cols="12" xs="12" sm="6" md="6">
+                      <v-text-field label="H2" outlined dense v-model="form.h2"></v-text-field>
+                    </v-col>
+                    <v-col cols="12" xs="12" sm="12" md="12">
+                      <v-textarea label="Description" filled outlined dense v-model="form.description"></v-textarea>
+                    <v-col cols="12" xs="12" sm="6" md="6">
+                      <v-text-field label="Columns" outlined dense v-model="form.columns"></v-text-field>
+                    </v-col>
+                    </v-col>
+                       <v-col
+                        cols="12"
+                        md="6"
+                      >   <v-file-input
+                          accept="image/*"
+                          label="Change Image"
+                          required
+                          type="file"
+                          @change="onFile"
+                        ></v-file-input>
+                        </v-col>
+                    <v-col cols="12">
+                      <v-btn color="accent" @click="save" >
+                        <v-icon left>mdi-content-save</v-icon>Save
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+            </v-card>
+          </v-dialog>
+   </v-row>
+</template>
+
+<script>
+export default {
+    props: ['dialogsectionb','sectionbclose', 'section', 'widget'],
+    data(){
+      return{
+        form:{
+          page: 'home',
+          section: 'sectionb',
+          columns: 4,
+          h1:'',
+          image:{},
+        },
+        store:'api/tax'
+      }
+    },
+  watch: {
+    widget: {
+      handler: "setWidget",
+      immediate: true,
+    },
+  },
+    methods:{
+    setWidget(val) {
+      // console.log("mmmmmmmmmmm", val)
+        if (val == undefined){
+            this.form = {}
+        }else{
+           this.form = { ...val };
+        }
+    },
+    onFile(e){
+      console.log(e)
+      this.picture = e
+    },
+      close(){
+          this.sectionbclose()
+          this.form.h1 = '',
+          this.form.description = ''
+      },
+      save() {
+          const data = [];
+          const details = {
+              h1: this.form.h1,
+              h2: this.form.h2,
+              description: this.form.description,
+              columns: this.form.columns
+          };
+          data.push(details);
+        // console.log(">>>>>>>>>>>>>>>>>",this.picture, data);
+        let coverImage = this.picture
+        const formData = new FormData();
+        formData.append("coverImage", coverImage);
+        // formData.append("data", data);
+        formData.append("modulos", JSON.stringify(data));
+
+       if (this.form.id !== ''){
+        const url = `/sector/update?item=${this.section._id}&id=${this.form.id}`;
+        this.loader = true;
+        this.$store
+          .dispatch("expressPut", { url, data:formData })
+          .then((res) => {
+              console.log(res)
+          })
+          .finally(() => {
+            location.reload();
+          })
+          .catch((err) => {
+            this.$refs.snackbar.show(err, "red");
+          });
+        }else{
+        const url = `/sector/${this.section._id}`;
+        this.loader = true;
+        this.$store
+          .dispatch("expressPut", { url, data:formData })
+          .then((res) => {
+              console.log(res)
+          })
+          .finally(() => {
+            location.reload();
+          })
+          .catch((err) => {
+            this.$refs.snackbar.show(err, "red");
+          });
+        }
+      },
+    }
+}
+</script>
+
+<style>
+
+</style>
