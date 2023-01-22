@@ -4,15 +4,15 @@ const ViewPage = () => import("./_pages/view.vue");
 
 export default [
   {
-    path: "/packages",
+    path: "/properties",
     component: Index,
   },
   {
-    path: "/new/package",
+    path: "/new/property",
     component: CreatePage,
   },
   {
-    path: "/package/details/:url",
+    path: "/property/details/:id",
     component: ViewPage,
   },
 ];

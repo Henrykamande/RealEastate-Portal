@@ -7,7 +7,7 @@ import RegistrationPage from "@/components/auth/register.vue";
 // auth routes
 import AuthRoutes from "@/components/auth/router";
 // module routes
-import PackagesRoutes from "@/components/packages/router";
+import PropertyRoutes from "@/components/properties/router";
 import ProductsRoutes from "@/components/products/router";
 import SliderRoutes from "@/components/slider/router";
 import ServicesRoutes from "@/components/services/router";
@@ -68,7 +68,7 @@ export default new Router({
           name: "SystemDashboard",
           component: SystemDashboard,
         },
-        ...PackagesRoutes,
+        ...PropertyRoutes,
         ...ProductsRoutes,
         ...SeoRoutes,
         ...AuthRoutes,

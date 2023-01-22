@@ -7,7 +7,7 @@
       <v-card-text>
         <v-row dense>
           <v-col cols="12">
-            <v-btn color="accent" text to="/new/package">
+            <v-btn color="accent" text to="/new/property">
               <v-icon>mdi-plus</v-icon>Property
             </v-btn>
             <v-text-field v-model="search" label="Search"></v-text-field>
@@ -26,7 +26,7 @@
                 <v-btn
                   color="primary"
                   text
-                  :to="`/property/details/${item.url}`"
+                  :to="`/property/details/${item.id}`"
                 >
                   {{ item.name }}
                 </v-btn>
@@ -38,7 +38,7 @@
                 <v-btn
                   color="editIcon"
                   text
-                  :to="`/property/details/${item.url}`"
+                  :to="`/property/details/${item.id}`"
                   icon
                   ><v-icon>mdi-eye</v-icon>
                 </v-btn>
@@ -123,10 +123,7 @@ export default {
       headers: [
         { text: "Name", value: "name" },
         { text: "Location", value: "Location" },
-        { text: "No of Roms", value: "NoOfRooms" },
-        /* { text: "Vaccant Roms", value: "vaccant" },
-         { text: "Action", value: "action" },
-        { text: "Delete", value: "delete" }, */
+        { text: "No of Roms", value: "NoOfRooms" }
       ],
     };
   },
@@ -137,7 +134,6 @@ export default {
       this.$store
         .dispatch("expressGet", url)
         .then((res) => {
-          console.log(res, "packages");
           if (res) {
             self.products = res;
 

@@ -2,9 +2,9 @@
   <v-container fluid>
     <v-card>
       <v-toolbar color="toolbarColor" dense dark>
-        <v-toolbar-title>Package Details</v-toolbar-title>
+        <v-toolbar-title>Property Details</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn text to="/packages"
+        <v-btn text to="/properties"
           ><v-icon left>mdi-arrow-left</v-icon>Back</v-btn
         >
       </v-toolbar>
@@ -30,8 +30,8 @@ export default {
     };
   },
   watch: {
-    "$route.params.url": {
-      handler: "setUrl",
+    "$route.params.id": {
+      handler: "getData",
       immediate: true,
     },
   },
@@ -55,21 +55,20 @@ export default {
           this.$refs.snackbar.show(err, "red");
         });
     },
-    getData() {
-      const url = `/packages/${this.url}`;
-      const self = this;
+    getData(val) {
+      if(val) {
+        const url = `/property/${val}`;
+        const self = this;
       this.$store
         .dispatch("expressGet", url)
         .then((res) => {
-          if (res.state) {
-            self.dataItem = res.record;
-          } else {
-            self.$refs.snackbar.show(res.msg, "red");
-          }
+          self.dataItem = res.ResponseData;
         })
         .catch((err) => {
           this.$refs.snackbar.show(err, "red");
         });
+      }
+      
     },
   },
   created() {

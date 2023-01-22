@@ -79,8 +79,6 @@
           </v-list-item>
         </v-list-group>
 
-
-
       </v-list>
     </v-navigation-drawer>
     <!-- end of sidebar -->
@@ -91,10 +89,11 @@
       app
       color="primary"
       dark
+      dense
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
-        <span class="hidden-sm-and-down">EnviaNet</span>
+        <span class="hidden-sm-and-down">Widescope Resources Ltd</span>
       </v-toolbar-title>
       <v-spacer />
       <span style="font-weight: bold">Welcome, {{ name }}</span>
@@ -124,21 +123,11 @@ export default {
         ['Payments', 'mdi-cog-outline'],
       ],
     items: [
-      { icon: "mdi-contacts", text: "Properties", link: "/packages" },
+      { icon: "mdi-contacts", text: "Properties", link: "/properties" },
       { icon: "mdi-keyboard", text: "Tenants", link: "/products" },
+      { icon: "mdi-keyboard", text: "Utility Bills", link: "/services" },
       { icon: "mdi-keyboard", text: "Water Readings", link: "/waterreadings" },
       { icon: "mdi-keyboard", text: "Electricity Readings", link: "/electricityreadings" },
-
-      { icon: "mdi-keyboard", text: "Utilities", link: "/services" },
-      { icon: "mdi-keyboard", text: "Settings", link: "/settings" },
-
-
-      //{ icon: "mdi-keyboard", text: "Slider Manager", link: "/slider" },
-      //{ icon: "mdi-keyboard", text: "Blog", link: "/blog" },
-      //{ icon: "mdi-keyboard", text: "SEO", link: "/seo" },
-      // { icon: "mdi-keyboard", text: "Widgets", link: "/modelo" },
-      // { icon: "mdi-keyboard", text: "Pages", link: "/pago" },
-      //{ icon: "mdi-keyboard", text: "Locations", link: "/location" },
       { icon: "mdi-keyboard", text: "Users", link: "/users" },
      // { icon: "mdi-keyboard", text: "Reports", link: "/services" },
 

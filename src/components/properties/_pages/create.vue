@@ -4,7 +4,7 @@
       <v-toolbar color="toolbarColor" dense dark>
         <v-toolbar-title>Add A Property</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn text to="/packages"
+        <v-btn text to="/properties"
           ><v-icon left>mdi-arrow-left</v-icon>Back</v-btn
         >
       </v-toolbar>
@@ -35,8 +35,8 @@ export default {
         .dispatch("expressPost", { url, data })
         .then((res) => {
           console.log(res);
-           if (res.state) {
-            self.$router.push("/packages");
+           if (res.ResultCode == 1200) {
+            self.$router.push("/properties");
           } else {
             self.$refs.snackbar.show(res.msg, "red");
           } 

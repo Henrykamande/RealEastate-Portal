@@ -11,9 +11,9 @@ export default new Vuetify({
   theme: {
     themes: {
       light: {
-        primary: "#261251",
-        accent: "#F76800",
-        toolbarColor: "#F76800",
+        primary: "#6A1B9A",
+        accent: "#E91E63",
+        toolbarColor: "#E91E63",
         secondary: "#FAFAFA",
         error: "#b71c1c",
         tabColor: "#BDBDBD",

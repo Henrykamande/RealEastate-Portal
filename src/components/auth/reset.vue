@@ -12,8 +12,7 @@
             <v-row>
               <v-col cols="12" md="6">
                 <v-img
-                  style="margin-top: 40px"
-                  src="@/assets/envianet.png"
+                  src="@/assets/logo.jpeg"
                 ></v-img>
               </v-col>
 

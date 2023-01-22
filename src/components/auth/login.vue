@@ -4,16 +4,15 @@
       <v-col cols="12" sm="7" md="7">
         <v-card class="elevation-12">
           <v-toolbar color="primary" dark flat>
-            <v-toolbar-title>EnviaNet</v-toolbar-title>
+            <v-toolbar-title>RENTAL MANAGEMENT SYSTEM</v-toolbar-title>
             <v-spacer />
             <v-icon>mdi-bank</v-icon>
           </v-toolbar>
           <v-card-text>
             <v-row>
-              <v-col cols="12" md="6" style="align-text: center">
+              <v-col cols="12" md="6">
                 <v-img
-                  style="margin-left: 100px; margin-top: 10px"
-                  src="@/assets/envianet.png"
+                  src="@/assets/logo.jpeg"
                 ></v-img>
               </v-col>
 
