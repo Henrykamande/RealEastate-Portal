@@ -2,14 +2,14 @@
   <v-container fluid>
     <v-card>
       <v-toolbar color="toolbarColor" dense dark>
-        <v-toolbar-title>Create Package</v-toolbar-title>
+        <v-toolbar-title>Add A Property</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn text to="/packages"
           ><v-icon left>mdi-arrow-left</v-icon>Back</v-btn
         >
       </v-toolbar>
       <v-card-text>
-        <editor @data="save" :action="action"></editor>
+       <editor @data="save" :action="action"></editor>
       </v-card-text>
     </v-card>
     <snackbar ref="snackbar"></snackbar>
@@ -29,16 +29,17 @@ export default {
   },
   methods: {
     save(data) {
-      const url = "/packages";
+      const url = "/property";
       const self = this;
       this.$store
         .dispatch("expressPost", { url, data })
         .then((res) => {
-          if (res.state) {
+          console.log(res);
+           if (res.state) {
             self.$router.push("/packages");
           } else {
             self.$refs.snackbar.show(res.msg, "red");
-          }
+          } 
         })
         .catch((err) => {
           this.$refs.snackbar.show(err, "red");

@@ -1,17 +1,17 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col cols="12" md="6">
+        
+      <v-col cols="4">
         <v-text-field
-          label="Utility Name"
-          name="serviceName"
+          label="Setting Name"
           outlined
           dense
-          v-model="record.title"
+          v-model="record.h1"
         ></v-text-field>
       </v-col>
 
-      <v-col cols="6">
+      <v-col cols="4">
         <v-text-field
           label="Price Per Unit"
           outlined
@@ -20,13 +20,38 @@
         ></v-text-field>
       </v-col>
 
-     
-
+     <!--  <v-col cols="12" md="3">
+         <v-menu
+        v-model="menu2"
+        :close-on-content-click="false"
+        :nudge-right="40"
+        transition="scale-transition"
+        offset-y
+        min-width="auto"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            v-model="date"
+            label="Readings Date"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker
+          v-model="date"
+          @input="menu2 = false"
+        ></v-date-picker>
+      </v-menu>
+      
+      </v-col>
+ -->
       <v-col cols="12">
         <v-textarea
           outlined
           v-model="record.metaDescription"
-          label="Utility Description"
+          label="Settings Notes"
           value
         ></v-textarea>
       </v-col>
@@ -147,6 +172,35 @@ export default {
   },
   data() {
     return {
+
+       date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      menu: false,
+      modal: false,
+      menu2: false,
+       select: { state: 'Heshima Appartments', abbr: 'HA' },
+        houses: [
+          { state: 'Heshima Appartments', abbr: 'HA' },
+          { state: 'Golden Palm House', abbr: 'GP' },
+          { state: 'Lake Side House', abbr: 'LS'},
+          { state: 'RiverPark HOuser', abbr: 'RP' },
+          { state: 'Blue Eden HOuse', abbr: 'BE' },
+        ],
+        roomNo: { state: 'D1', abbr: 'D1' },
+        rooms: [
+          { state: 'D1', abbr: 'D1' },
+          { state: 'D2', abbr: 'D2' },
+          { state: 'D3', abbr: 'D3' },
+          { state: 'D4', abbr: 'D4' },
+          
+        ],
+
+        readingTypes: { state: 'Electricity', abbr: 'E' },
+        readings: [
+          { state: 'Electricity', abbr: 'E' },
+          { state: 'Water', abbr: 'W' },
+          
+          
+        ],
       sizes: [{ name: "1 Acre" }, { name: "2 Acres" }],
       record: {},
       pageStatus: "",

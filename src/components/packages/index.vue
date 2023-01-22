@@ -2,18 +2,19 @@
   <v-container fluid>
     <v-card>
       <v-toolbar color="toolbarColor" dense dark>
-        <v-toolbar-title>Packages</v-toolbar-title>
+        <v-toolbar-title>Properties</v-toolbar-title>
       </v-toolbar>
       <v-card-text>
         <v-row dense>
           <v-col cols="12">
             <v-btn color="accent" text to="/new/package">
-              <v-icon>mdi-plus</v-icon>Package
+              <v-icon>mdi-plus</v-icon>Property
             </v-btn>
             <v-text-field v-model="search" label="Search"></v-text-field>
           </v-col>
           <!-- start of col -->
           <v-col cols="12">
+
             <v-data-table
               :items-per-page="2000"
               :headers="headers"
@@ -25,7 +26,7 @@
                 <v-btn
                   color="primary"
                   text
-                  :to="`/package/details/${item.url}`"
+                  :to="`/property/details/${item.url}`"
                 >
                   {{ item.name }}
                 </v-btn>
@@ -37,7 +38,7 @@
                 <v-btn
                   color="editIcon"
                   text
-                  :to="`/package/details/${item.url}`"
+                  :to="`/property/details/${item.url}`"
                   icon
                   ><v-icon>mdi-eye</v-icon>
                 </v-btn>
@@ -115,27 +116,31 @@ export default {
       search: null,
       deleteDialog: false,
       deleteItem: {},
-      products: [],
+      products: [
+    
+      ],
       loader: false,
       headers: [
         { text: "Name", value: "name" },
-        { text: "Speed", value: "speed" },
-        { text: "Price", value: "price" },
-        { text: "Action", value: "action" },
-        { text: "Delete", value: "delete" },
+        { text: "Location", value: "Location" },
+        { text: "No of Roms", value: "NoOfRooms" },
+        /* { text: "Vaccant Roms", value: "vaccant" },
+         { text: "Action", value: "action" },
+        { text: "Delete", value: "delete" }, */
       ],
     };
   },
   methods: {
     getData() {
-      const url = "/packages";
+      const url = "/property";
       const self = this;
       this.$store
         .dispatch("expressGet", url)
         .then((res) => {
           console.log(res, "packages");
-          if (res.state) {
-            self.products = res.records;
+          if (res) {
+            self.products = res;
+
           }
         })
         .catch((err) => {

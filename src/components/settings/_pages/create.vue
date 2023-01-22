@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-card>
       <v-toolbar color="toolbarColor" dense dark>
-        <v-toolbar-title>Create A Utility</v-toolbar-title>
+        <v-toolbar-title>Record Readings</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn text to="/services"
           ><v-icon left>mdi-arrow-left</v-icon>Back</v-btn
