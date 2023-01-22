@@ -4,7 +4,7 @@
       <v-toolbar color="toolbarColor" dense dark>
         <v-toolbar-title>Product Details</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn text to="/products">
+        <v-btn text to="/tenants">
           <v-icon left>mdi-arrow-left</v-icon>Back
         </v-btn>
       </v-toolbar>

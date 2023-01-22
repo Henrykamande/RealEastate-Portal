@@ -4,7 +4,7 @@
       <v-toolbar color="toolbarColor" dense dark>
         <v-toolbar-title>Add Tenant</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn text to="/products"
+        <v-btn text to="/tenants"
           ><v-icon left>mdi-arrow-left</v-icon>Back</v-btn
         >
       </v-toolbar>
@@ -29,19 +29,16 @@ export default {
   },
   methods: {
     save(data) {
-      const url = "/products";
+      const url = "/tenant";
       const self = this;
       this.$store
         .dispatch("expressPost", { url, data })
         .then((res) => {
-          if (res.state) {
-            self.$router.push("/products");
+          if (res.ResultCode == 1200) {
+            self.$router.push("/tenants");
           } else {
-            self.$refs.snackbar.show(res.msg, "red");
+            self.$refs.snackbar.show(res.ResultDesc, "red");
           }
-        })
-        .finally(() => {
-          location.reload();
         })
         .catch((err) => {
           this.$refs.snackbar.show(err, "red");

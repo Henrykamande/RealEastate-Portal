@@ -33,9 +33,9 @@
           v-model="record.NoOfRooms"
         ></v-text-field>
       </v-col>
-  
     </v-row>
 
+    
     <v-row class="mb-2">
       <v-col cols="12">
         <v-btn color="accent" small v-show="action == 'create'" @click="sendData" :loading="loader">

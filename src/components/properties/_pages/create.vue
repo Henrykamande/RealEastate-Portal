@@ -38,7 +38,7 @@ export default {
            if (res.ResultCode == 1200) {
             self.$router.push("/properties");
           } else {
-            self.$refs.snackbar.show(res.msg, "red");
+            self.$refs.snackbar.show(res.ResultDesc, "red");
           } 
         })
         .catch((err) => {
