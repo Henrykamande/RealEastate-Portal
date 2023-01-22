@@ -2,12 +2,12 @@
   <v-container fluid>
     <v-card>
       <v-toolbar color="toolbarColor" dense dark>
-        <v-toolbar-title>Billable Utilities </v-toolbar-title>
+        <v-toolbar-title>Water Readings</v-toolbar-title>
       </v-toolbar>
       <v-card-text>
         <v-row>
           <v-col cols="12">
-            <v-btn color="accent" text to="/new/service"><v-icon>mdi-plus</v-icon>Utility</v-btn>
+            <v-btn color="accent" text to="/new/waterreadings"><v-icon>mdi-plus</v-icon>Reading</v-btn>
           </v-col>
         </v-row>
 

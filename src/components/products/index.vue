@@ -8,7 +8,7 @@
         <v-row>
           <v-col cols="12">
             <v-btn color="accent" text to="/new/product"
-              ><v-icon>mdi-plus</v-icon>Product</v-btn
+              ><v-icon>mdi-plus</v-icon>Tenant</v-btn
             >
           </v-col>
         </v-row>

@@ -51,7 +51,36 @@
               <v-list-item-title>{{ item.text }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+          
         </template>
+         <v-list-group
+        :value="true"
+        prepend-icon="mdi-keyboard"
+        sub-group
+      >
+        <template v-slot:activator>
+                      <v-list-item-content>
+
+          <v-list-item-title>Reports</v-list-item-title>
+                      </v-list-item-content>
+
+        </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in reports"
+            :key="i"
+            link
+          >
+            <v-list-item-title v-text="title"></v-list-item-title>
+
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </v-list-group>
+
+
+
       </v-list>
     </v-navigation-drawer>
     <!-- end of sidebar -->
@@ -90,17 +119,29 @@ export default {
   },
   data: () => ({
     drawer: true,
+    reports: [
+        ['Invoices', 'mdi-account-multiple-outline'],
+        ['Payments', 'mdi-cog-outline'],
+      ],
     items: [
-      { icon: "mdi-contacts", text: "Packages", link: "/packages" },
-      { icon: "mdi-keyboard", text: "Products", link: "/products" },
-      // { icon: "mdi-keyboard", text: "Services", link: "/services" },
-      { icon: "mdi-keyboard", text: "Slider Manager", link: "/slider" },
-      { icon: "mdi-keyboard", text: "Blog", link: "/blog" },
-      { icon: "mdi-keyboard", text: "SEO", link: "/seo" },
+      { icon: "mdi-contacts", text: "Properties", link: "/packages" },
+      { icon: "mdi-keyboard", text: "Tenants", link: "/products" },
+      { icon: "mdi-keyboard", text: "Water Readings", link: "/waterreadings" },
+      { icon: "mdi-keyboard", text: "Electricity Readings", link: "/electricityreadings" },
+
+      { icon: "mdi-keyboard", text: "Utilities", link: "/services" },
+      { icon: "mdi-keyboard", text: "Settings", link: "/settings" },
+
+
+      //{ icon: "mdi-keyboard", text: "Slider Manager", link: "/slider" },
+      //{ icon: "mdi-keyboard", text: "Blog", link: "/blog" },
+      //{ icon: "mdi-keyboard", text: "SEO", link: "/seo" },
       // { icon: "mdi-keyboard", text: "Widgets", link: "/modelo" },
       // { icon: "mdi-keyboard", text: "Pages", link: "/pago" },
-      { icon: "mdi-keyboard", text: "Locations", link: "/location" },
+      //{ icon: "mdi-keyboard", text: "Locations", link: "/location" },
       { icon: "mdi-keyboard", text: "Users", link: "/users" },
+     // { icon: "mdi-keyboard", text: "Reports", link: "/services" },
+
       // { icon: "mdi-keyboard", text: "Section", link: "/sector" },
       // { icon: "mdi-keyboard", text: "Sectionb", link: "/sectorb" },
     ],

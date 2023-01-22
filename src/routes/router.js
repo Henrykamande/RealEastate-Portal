@@ -11,6 +11,11 @@ import PackagesRoutes from "@/components/packages/router";
 import ProductsRoutes from "@/components/products/router";
 import SliderRoutes from "@/components/slider/router";
 import ServicesRoutes from "@/components/services/router";
+import WaterReadingsRoutes from "@/components/waterreadings/router";
+import ElectricityReadingsRoutes from "@/components/electricityreadings/router";
+import SettingsRoutes from "@/components/settings/router";
+
+
 import BlogRoutes from "@/components/blog/router";
 import SeoRoutes from "@/components/seo/router";
 import UsersRoutes from "@/components/users/router";
@@ -69,6 +74,9 @@ export default new Router({
         ...AuthRoutes,
         ...SliderRoutes,
         ...ServicesRoutes,
+        ...WaterReadingsRoutes,
+        ...ElectricityReadingsRoutes,
+        ...SettingsRoutes,
         ...BlogRoutes,
         ...UsersRoutes,
         ...SectorRoutes,

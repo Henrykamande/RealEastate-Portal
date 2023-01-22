@@ -1,37 +1,125 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col cols="12" md="12">
+    <v-col cols="12" md="3">
         <v-text-field
-          label="Title"
-          name="serviceName"
+          label="Tenant Name"
+          name="tenantName"
           outlined
           dense
           v-model="record.title"
         ></v-text-field>
       </v-col>
+      <v-col cols="12" md="3">
+       <v-text-field
+          label="Id No."
+          name="tenantIDNo"
+          outlined
+          dense
+          v-model="record.title"
+        ></v-text-field>
+        </v-col>
 
-      <v-col cols="6">
+         <v-col cols="12" md="3">
         <v-text-field
-          label="H1"
+          label="Phone No."
+          name="tenantPhoneNo"
+          outlined
+          dense
+          v-model="record.title"
+        ></v-text-field>
+      </v-col>
+      <v-col cols="12" md="3">
+       <v-text-field
+          label="Next of Kin Tel No."
+          name="kinPhoneNo"
+          outlined
+          dense
+          v-model="record.title"
+        ></v-text-field>
+        </v-col>
+    <!--   <v-col cols="4">
+           <v-select
+          v-model="select"
+          :hint="`${select.state}, ${select.abbr}`"
+          :items="houses"
+          item-text="state"
+          item-value="abbr"
+          label="Select"
+          persistent-hint
+          return-object
+          single-line
+        ></v-select> 
+         <v-text-field
+          label=""
           outlined
           dense
           v-model="record.h1"
-        ></v-text-field>
-      </v-col>
+        ></v-text-field> 
+      </v-col>  -->
 
-      <v-col cols="6">
-        <v-text-field
+      <v-col cols="4">
+         <v-select
+          v-model="roomSelect"
+          :hint="`${roomSelect.state}, ${roomSelect.abbr}`"
+          :items="roomType"
+          item-text="state"
+          item-value="abbr"
+          label="Select"
+          persistent-hint
+          return-object
+          single-line
+        ></v-select> 
+        <!-- <v-text-field
           label="H2"
           outlined
           dense
           v-model="record.h2"
+        ></v-text-field> -->
+      </v-col>
+
+      <v-col cols="4">
+           <v-select
+          v-model="roomNo"
+          :hint="`${roomNo.state}, ${roomNo.abbr}`"
+          :items="rooms"
+          item-text="state"
+          item-value="abbr"
+          label="Select"
+          persistent-hint
+          return-object
+          single-line
+        ></v-select> 
+        <!-- <v-text-field
+          label=""
+          outlined
+          dense
+          v-model="record.h1"
+        ></v-text-field> -->
+      </v-col> 
+
+         <v-col cols="4">
+        <v-text-field
+          label="Deposit Paid."
+          name="depositPaid"
+          outlined
+          dense
+          v-model="record.title"
+        ></v-text-field>
+      </v-col>
+      <v-col cols="5">
+        <v-text-field
+          label="Opening Water Reading"
+          outlined
+          dense
+          v-model="record.metaTitle"
         ></v-text-field>
       </v-col>
 
-      <v-col cols="12">
+
+      <v-col cols="5">
         <v-text-field
-          label="Meta Title"
+          label="Opening Electricity Reading"
           outlined
           dense
           v-model="record.metaTitle"
@@ -42,7 +130,7 @@
         <v-textarea
           outlined
           v-model="record.metaDescription"
-          label="Meta Description"
+          label="Room Condations"
           value
         ></v-textarea>
       </v-col>
@@ -163,6 +251,30 @@ export default {
   },
   data() {
     return {
+  select: { state: 'Heshima Appartments', abbr: 'HA' },
+        houses: [
+          { state: 'Heshima Appartments', abbr: 'HA' },
+          { state: 'Golden Palm House', abbr: 'GP' },
+          { state: 'Lake Side House', abbr: 'LS'},
+          { state: 'RiverPark HOuser', abbr: 'RP' },
+          { state: 'Blue Eden HOuse', abbr: 'BE' },
+        ],
+         roomSelect: { state: 'One Bedroom', abbr: '1B' },
+        roomType: [
+          { state: 'One Bedroom', abbr: '1B' },
+          { state: 'Two Bedroom', abbr: '2B' },
+          { state: 'Three Bedroom', abbr: '3B' },
+          { state: 'Bed Sitter', abbr: 'CA' },
+          { state: 'Single Room', abbr: 'NY' },
+        ],
+   roomNo: { state: 'D1', abbr: 'D1' },
+        rooms: [
+          { state: 'D1', abbr: 'D1' },
+          { state: 'D2', abbr: 'D2' },
+          { state: 'D3', abbr: 'D3' },
+          { state: 'D4', abbr: 'D4' },
+          
+        ],
       sizes: [{ name: "1 Acre" }, { name: "2 Acres" }],
       record: {},
       pageStatus: "",
