@@ -124,15 +124,11 @@ export default {
       ],
     items: [
       { icon: "mdi-contacts", text: "Properties", link: "/properties" },
-      { icon: "mdi-keyboard", text: "Tenants", link: "/products" },
+      { icon: "mdi-keyboard", text: "Tenants", link: "/tenants" },
       { icon: "mdi-keyboard", text: "Utility Bills", link: "/services" },
       { icon: "mdi-keyboard", text: "Water Readings", link: "/waterreadings" },
       { icon: "mdi-keyboard", text: "Electricity Readings", link: "/electricityreadings" },
       { icon: "mdi-keyboard", text: "Users", link: "/users" },
-     // { icon: "mdi-keyboard", text: "Reports", link: "/services" },
-
-      // { icon: "mdi-keyboard", text: "Section", link: "/sector" },
-      // { icon: "mdi-keyboard", text: "Sectionb", link: "/sectorb" },
     ],
   }),
   methods: {
