@@ -13,8 +13,30 @@
 
         <v-row>
           <!-- start of col -->
-          <v-col cols="4" v-for="billableItem in billAbleItems" v-bind:key="billableItem._id">
-            <v-card class="mx-auto" :to="`/service/details/${billableItem.url}`">
+          <v-col cols="4" >
+           
+           
+           
+           
+             <v-data-table
+              :items-per-page="pageItems"
+              :headers="headers"
+              :items=" billAbleItems"
+              :search="search"
+            >
+             <template v-slot:item.Name="{ item }">
+                <v-btn
+                  color="primary"
+                  text
+                  :to="`/service/details/${item.id}`"
+                >
+                  {{ item.Name }}
+                </v-btn>
+              </template>
+           
+                       </v-data-table>
+
+            <!-- <v-card class="mx-auto" :to="`/service/details/${billableItem.url}`">
               <v-img
                 :src="`${serverUrl}/uploads/services/${billableItem.coverImage}`"
                 height="200px"
@@ -28,7 +50,7 @@
               <v-card-actions> 
                 <v-btn color="accent" text :to="`/service/details/${billableItem.url}`">More Details</v-btn>
               </v-card-actions>
-            </v-card>
+            </v-card> -->
           </v-col>
           <!-- end of col -->
         </v-row>
@@ -46,6 +68,11 @@ export default {
   },
   data() {
     return {
+       headers: [
+      { text: "Utility Name", value: "Name" },
+      { text: "Price Per Unit", value: "pricePerUnit" },
+      { text: "Description", value: "utilityDescription" },
+    ],
      billAbleItems: [],
     }
   },

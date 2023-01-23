@@ -38,13 +38,13 @@ export default {
   methods: {
     setUrl(val) {
       this.url = val;
-      const url = `/services/${val}`;
+      const url = `/billable-items/${val}`;
       const self = this;
       this.$store
         .dispatch("expressGet", url)
         .then((res) => {
-          if (res.state) {
-            self.dataItem = res.record;
+          if (res.ResultCode ==  1200) {
+            self.dataItem = res.ResponseData;
           } else {
             self.$refs.snackbar.show(res.msg, "red");
           }

@@ -55,7 +55,7 @@ export default {
     pageItems: 100,
     headers: [
       { text: "Name", value: "name" },
-      { text: "Phone Number", value: "email" },
+      { text: "Phone Number", value: "phone" },
       { text: "Email Address", value: "email" },
       { text: "Role", value: "role" },
     ],
@@ -69,7 +69,7 @@ export default {
         .then((res) => {
           console.log(res, 'res')
           if (res.ResultCode == 1200) {
-            self.users = res.records;
+            self.users = res.ResponseData;
           } else {
             this.$refs.snackbar.show(res.msg, "red");
           }
