@@ -29,12 +29,12 @@ export default {
   },
   methods: {
     save(data) {
-      const url = "/services";
+      const url = "/billable-items";
       const self = this;
       this.$store
         .dispatch("expressPost", { url, data })
         .then((res) => {
-          if(res.state) {
+          if(res.ResultCode == 1200) {
             self.$router.push('/services');
           }else{
             self.$refs.snackbar.show(res.msg, "red");

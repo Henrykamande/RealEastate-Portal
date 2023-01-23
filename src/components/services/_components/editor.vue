@@ -7,16 +7,18 @@
           name="serviceName"
           outlined
           dense
-          v-model="record.title"
+          v-model="record.Name"
         ></v-text-field>
       </v-col>
 
       <v-col cols="6">
         <v-text-field
           label="Price Per Unit"
+          name="pricePerUnit"
+
           outlined
           dense
-          v-model="record.h1"
+          v-model="record.pricePerUnit"
         ></v-text-field>
       </v-col>
 
@@ -25,8 +27,10 @@
       <v-col cols="12">
         <v-textarea
           outlined
-          v-model="record.metaDescription"
+          v-model="record.utilityDescription"
           label="Utility Description"
+          name="utilityDescription"
+
           value
         ></v-textarea>
       </v-col>
@@ -191,29 +195,8 @@ export default {
       this.initializeContent();
     },
     sendData() {
-      const productContent = this.$refs.footer_content.getContent();
+       const formData = this.record;
 
-      const formData = new FormData();
-      const url = this.record.title
-        .toLowerCase()
-        .replace(/[^\w\s]/gi, "")
-        .trim()
-        .split(" ")
-        .join("-");
-      this.record.url = url;
-
-      formData.append("coverImage", this.coverImage);
-      formData.append("content", productContent);
-      formData.append("introText", this.introText);
-      formData.append("product", JSON.stringify(this.record));
-      formData.append("actionStatus", "view");
-      //other images
-      const files = this.images;
-      files.forEach((file) => {
-        const m_file = file;
-        formData.append("otherImages", m_file);
-      });
-      this.loader = true;
       this.$emit("data", formData);
     },
     setCoverImage({ image, imageUrl }) {

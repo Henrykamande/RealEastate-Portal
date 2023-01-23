@@ -13,20 +13,20 @@
 
         <v-row>
           <!-- start of col -->
-          <v-col cols="4" v-for="service in services" v-bind:key="service._id">
-            <v-card class="mx-auto" :to="`/service/details/${service.url}`">
+          <v-col cols="4" v-for="billableItem in billAbleItems" v-bind:key="billableItem._id">
+            <v-card class="mx-auto" :to="`/service/details/${billableItem.url}`">
               <v-img
-                :src="`${serverUrl}/uploads/services/${service.coverImage}`"
+                :src="`${serverUrl}/uploads/services/${billableItem.coverImage}`"
                 height="200px"
                 style="max-height: 200px"
               ></v-img>
 
-              <v-card-title> {{service.title}} </v-card-title>
+              <v-card-title> {{billableItem.Name}} </v-card-title>
 
-              <v-card-subtitle> {{service.size}} </v-card-subtitle>
+              <v-card-subtitle> {{billableItem.pricePerUnit}} </v-card-subtitle>
 
               <v-card-actions> 
-                <v-btn color="accent" text :to="`/service/details/${service.url}`">More Details</v-btn>
+                <v-btn color="accent" text :to="`/service/details/${billableItem.url}`">More Details</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -46,18 +46,19 @@ export default {
   },
   data() {
     return {
-     services: [],
+     billAbleItems: [],
     }
   },
   methods: {
      getData() {
-      const url = "/services";
+      const url = "/billable-items";
       const self = this;
       this.$store
         .dispatch("expressGet", url)
         .then((res) => {
-          if(res.state) {
-           self.services = res.records;
+          if(res.ResultCode == 1200) {
+            console.log(res.ResponseData)
+           self.billAbleItems = res.ResponseData;
           }
         })
         .catch((err) => {

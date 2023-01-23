@@ -18,7 +18,7 @@
             <v-data-table
               :items-per-page="2000"
               :headers="headers"
-              :items="products"
+              :items="rentalProperties"
               :search="search"
             >
               <!-- name template -->
@@ -116,7 +116,7 @@ export default {
       search: null,
       deleteDialog: false,
       deleteItem: {},
-      products: [
+      rentalProperties: [
     
       ],
       loader: false,
@@ -134,8 +134,8 @@ export default {
       this.$store
         .dispatch("expressGet", url)
         .then((res) => {
-          if (res) {
-            self.products = res;
+          if (res.ResultCode == 1200) {
+            self.rentalProperties = res.ResponseData;
 
           }
         })
